@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+form {
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+}
+
+input:valid {
+    border: 2px solid green;
+}
+
+input:invalid {
+    border: 2px solid navy;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+#successMessage {
+    color: green;
+    font-size: 16px;
+}
+
+#submitBtn {
+    background-color: #003cff; 
+    color: white; 
+    padding: 10px 20px;
+    border-radius: 3em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submitBtn:hover {
+    background-color: #0056b3
+}
