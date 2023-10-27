@@ -43,6 +43,23 @@ document.addEventListener("DOMContentLoaded", function () {
             clearError(zipCode, zipCodeError);
         }
     }
-    
-})
+     function validatePassword() {
+        if (password.validity.valueMissing) {
+            showError(password, passwordError, "Password is required.");
+        } else {
+            clearError(password, passwordError);
+        }
+    }
+
+    function validatePasswordConfirmation() {
+        if (passwordConfirmation.validity.valueMissing) {
+            showError(passwordConfirmation, passwordConfirmationError, "Password confirmation is required.");
+        } else if (passwordConfirmation.value !== password.value) {
+            showError(passwordConfirmation, passwordConfirmationError, "Passwords do not match.");
+        } else {
+            clearError(passwordConfirmation, passwordConfirmationError);
+        }
+    }
+
+});
 
