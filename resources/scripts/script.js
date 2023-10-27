@@ -27,5 +27,22 @@ document.addEventListener("DOMContentLoaded", function () {
             clearError(email, emailError);
         }
     }
+
+      function validateCountry() {
+        if (country.validity.valueMissing) {
+            showError(country, countryError, "Country is required.");
+        } else {
+            clearError(country, countryError);
+        }
+    }
+
+    function validateZipCode() {
+        if (zipCode.validity.valueMissing) {
+            showError(zipCode, zipCodeError, "Zip Code is required.");
+        } else {
+            clearError(zipCode, zipCodeError);
+        }
+    }
+    
 })
 
