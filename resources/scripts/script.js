@@ -61,5 +61,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    email.addEventListener("input", validateEmail);
+    country.addEventListener("input", validateCountry);
+    zipCode.addEventListener("input", validateZipCode);
+    password.addEventListener("input", validatePassword);
+    passwordConfirmation.addEventListener("input", validatePasswordConfirmation);
+
+    submitBtn.addEventListener("click", function () {
+        validateEmail();
+        validateCountry();
+        validateZipCode();
+        validatePassword();
+        validatePasswordConfirmation();
+
+        if (form.checkValidity()) {
+            form.style.display = "none";
+            successMessage.textContent = "High five! Form submitted successfully.";
+        }
+    });
 });
 
