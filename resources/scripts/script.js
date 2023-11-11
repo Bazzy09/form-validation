@@ -21,28 +21,79 @@ document.addEventListener("DOMContentLoaded", function () {
     function validateEmail() {
         if (email.validity.valueMissing) {
             showError(email, emailError, "Email is required.");
+            return false;
         } else if (email.validity.typeMismatch) {
             showError(email, emailError, "Invalid email format.");
+            return false;
         } else {
             clearError(email, emailError);
+            return true;
         }
     }
 
-      function validateCountry() {
+    function validateCountry() {
         if (country.validity.valueMissing) {
             showError(country, countryError, "Country is required.");
+            return false;
         } else {
             clearError(country, countryError);
+            return true;
         }
     }
 
     function validateZipCode() {
         if (zipCode.validity.valueMissing) {
             showError(zipCode, zipCodeError, "Zip Code is required.");
+            return false;
         } else {
             clearError(zipCode, zipCodeError);
+            return true;
         }
     }
-    
-})
 
+    function validatePassword() {
+        if (password.validity.valueMissing) {
+            showError(password, passwordError, "Password is required.");
+            return false;
+        } else {
+            clearError(password, passwordError);
+            return true;
+        }
+    }
+
+    function validatePasswordConfirmation() {
+        if (passwordConfirmation.validity.valueMissing) {
+            showError(passwordConfirmation, passwordConfirmationError, "Password confirmation is required.");
+            return false;
+        } else if (passwordConfirmation.value !== password.value) {
+            showError(passwordConfirmation, passwordConfirmationError, "Passwords do not match.");
+            return false;
+        } else {
+            clearError(passwordConfirmation, passwordConfirmationError);
+            return true;
+        }
+    }
+
+    email.addEventListener("input", validateEmail);
+    country.addEventListener("input", validateCountry);
+    zipCode.addEventListener("input", validateZipCode);
+    password.addEventListener("input", validatePassword);
+    passwordConfirmation.addEventListener("input", validatePasswordConfirmation);
+
+    submitBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        if (
+            validateEmail() &&
+            validateCountry() &&
+            validateZipCode() &&
+            validatePassword() &&
+            validatePasswordConfirmation()
+        ) {
+            if (form.checkValidity()) {
+                form.style.display = "none";
+                successMessage.textContent = "High five! Form submitted successfully.";
+            }
+        }
+    });
+});
